@@ -8,8 +8,6 @@ concurrency:
 jobs:
   build_job:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:22.04
     if: ${{ github.event_name }} == "push"
     timeout-minutes: 60
     env:
@@ -30,8 +28,6 @@ jobs:
   test_job:
     needs: build_job
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:22.04
     if: ${{ github.event_name }} == "push"
     timeout-minutes: 60
     env:
@@ -54,8 +50,6 @@ jobs:
   deploy_job:
     needs: test_job
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:22.04
     if: ${{ github.event_name }} == "push"
     timeout-minutes: 60
     env:
