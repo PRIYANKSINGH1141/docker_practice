@@ -38,6 +38,9 @@ jobs:
         fetch-depth: 20
         lfs: true
     - uses: actions/download-artifact@v4.1.0
+      with:
+        name: build_job
+        path: .
     - run: echo "Testing the application..."
     - run: cat build.txt
     - run: echo "Test completed successfully" > test.txt
@@ -60,6 +63,9 @@ jobs:
         fetch-depth: 20
         lfs: true
     - uses: actions/download-artifact@v4.1.0
+      with:
+        name: test_job
+        path: .
     - run: echo "Deploying..."
     - run: cat test.txt
     - run: echo "Deployment successful" > deploy.txt
